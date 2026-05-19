@@ -30,6 +30,9 @@
         margin: 10px;
         border: 2px solid blue;
       }
+      html {
+        font-size: 24px;
+      }
     </style>
   </head>
   <body>
@@ -38,5 +41,75 @@
       <div class="child">자식요소</div>
     </div>
     <hr />
+    <div style="font-size: 24px">
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil
+      repudiandae quis vel suscipit dicta iusto, similique dolorum illum quas.
+      Unde molestias adipisci maiores soluta quod iste totam nesciunt ratione
+      eveniet?
+    </div>
+    <div style="font-size: 48px">
+      <!-- %는 상위요소에서 관련 크기 값을 가져오겠다 -->
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil
+      repudiandae quis vel suscipit dicta iusto, similique dolorum illum quas.
+      Unde molestias adipisci maiores soluta quod iste totam nesciunt ratione
+      eveniet?
+      <div style="font-size: 50%">
+        <!-- %는 상위요소에서 관련 크기 값을 가져오겠다 -->
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil
+        repudiandae quis vel suscipit dicta iusto, similique dolorum illum quas.
+        Unde molestias adipisci maiores soluta quod iste totam nesciunt ratione
+        eveniet?
+        <div style="font-size: 50%">
+          <!-- %는 상위요소에서 관련 크기 값을 가져오겠다 -->
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nihil
+          repudiandae quis vel suscipit dicta iusto, similique dolorum illum
+          quas. Unde molestias adipisci maiores soluta quod iste totam nesciunt
+          ratione eveniet?
+        </div>
+      </div>
+    </div>
+    <!-- 기본 폰트는 일반적으로 16px -->
+    <div style="font-size: 2em">
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Possimus, optio!
+      Delectus, nam unde quibusdam maxime quisquam, autem laudantium asperiores
+      officiis error in expedita adipisci atque accusamus quam, commodi eaque
+      nulla!
+      <div style="font-size: 2em">
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Possimus,
+        optio! Delectus, nam unde quibusdam maxime quisquam, autem laudantium
+        asperiores officiis error in expedita adipisci atque accusamus quam,
+        commodi eaque nulla!
+        <div style="font-size: 2em">
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Possimus,
+          optio! Delectus, nam unde quibusdam maxime quisquam, autem laudantium
+          asperiores officiis error in expedita adipisci atque accusamus quam,
+          commodi eaque nulla!
+        </div>
+        <!-- root, html의 정의된 폰트값 -->
+        <div style="font-size: 2rem">
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Possimus,
+          optio! Delectus, nam unde quibusdam maxime quisquam, autem laudantium
+          asperiores officiis error in expedita adipisci atque accusamus quam,
+          commodi eaque nulla!
+        </div>
+      </div>
+    </div>
+    <!-- 텍스트 크기 ... -> wh 크기 -->
+    <div
+      style="
+        width: 400px;
+        height: 400px;
+        background-color: cadetblue;
+        /* font-size: 36px; */
+      "
+    >
+      <div style="width: 50%; height: 50%; background-color: goldenrod"></div>
+      <!-- 요소의 크기에 관련도 em도 폰트사이즈에 영향을 받음 -->
+      <div style="width: 2em; height: 1em; background-color: skyblue"></div>
+      <!-- rem도 유사... -->
+    </div>
+    <!-- vw, vh : 브라우저의 가로/세로 길이 (개발자도구 및 주소창 빼고) -->
+    <div style="background-color: aqua; width: 100vw; height: 100vh"></div>
+    <!-- aspect ratio, ... -->
   </body>
 </html>
