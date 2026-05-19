@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jason's GPU & Tech Store - Cyberpunk Hardware Hub</title>
+    <!-- Tailwind CSS v4 CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Google Fonts: Orbitron & Noto Sans KR -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;800;900&family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+      /* Custom Premium Styles blending with Tailwind */
+      body {
+        font-family: 'Noto Sans KR', sans-serif;
+        background-color: #060814;
+      }
+      .font-tech {
+        font-family: 'Orbitron', sans-serif;
+      }
+      /* Custom glowing mesh backgrounds */
+      .glow-mesh {
+        background: radial-gradient(circle at 20% 30%, rgba(16, 185, 129, 0.08) 0%, transparent 50%),
+                    radial-gradient(circle at 80% 70%, rgba(99, 102, 241, 0.08) 0%, transparent 50%);
+      }
+      /* Glassmorphism custom styling */
+      .glass-panel {
+        background: rgba(15, 23, 42, 0.45);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+      }
+      /* Custom hover scale and glow for GPU cards */
+      .tech-card {
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .tech-card:hover {
+        transform: translateY(-6px);
+        border-color: rgba(16, 185, 129, 0.3);
+        box-shadow: 0 10px 30px rgba(16, 185, 129, 0.1);
+      }
+    </style>
+  </head>
+  <body class="text-slate-100 min-h-screen flex flex-col overflow-x-hidden glow-mesh">
+    
+    <!-- 1. STICKY GLASSMORPHIC HEADER (Position Sticky, Flex, Responsive) -->
+    <header class="sticky top-0 z-50 glass-panel border-b border-slate-800/80 py-4">
+      <div class="container mx-auto px-4 md:px-6 flex items-center justify-between">
+        
+        <!-- Logo & Branding -->
+        <a href="#" class="flex items-center gap-3 group">
+          <div class="relative flex items-center justify-center w-10 h-10 bg-emerald-500/10 border border-emerald-500/30 rounded-xl group-hover:border-emerald-400 group-hover:bg-emerald-500/20 transition-all duration-300">
+            <span class="font-tech text-xl font-black text-emerald-400">J</span>
+          </div>
+          <div>
+            <span class="font-tech text-lg font-black tracking-widest text-transparent bg-clip-text bg-gradient-to-r from-white via-slate-100 to-emerald-400">JASON GPU</span>
+            <span class="hidden sm:inline-block text-[10px] block font-tech text-emerald-500 tracking-wider font-semibold">HARDWARE HUB</span>
+          </div>
+        </a>
+
+        <!-- Middle navigation links (Hidden on mobile/tablet, Flex items) -->
+        <nav class="hidden md:flex items-center gap-8 text-sm font-semibold tracking-wider text-slate-400">
+          <a href="#" class="text-emerald-400 transition-colors duration-300">DASHBOARD</a>
+          <a href="#gpu-list" class="hover:text-white transition-colors duration-300">GPU STOCK</a>
+          <a href="#rig" class="hover:text-white transition-colors duration-300">MINING RUGS</a>
+          <a href="#community" class="hover:text-white transition-colors duration-300">COMMUNITY</a>
+        </nav>
+
+        <!-- Right actions (Avatar, Shopping cart, Flex) -->
+        <div class="flex items-center gap-4">
+          <!-- Shopping Cart with Absolute badge -->
+          <button class="relative p-2.5 bg-slate-900/80 border border-slate-800 rounded-xl hover:border-slate-700 hover:text-emerald-400 transition-all duration-300 cursor-pointer">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+            </svg>
+            <!-- Absolute status badge -->
+            <span class="absolute -top-1.5 -right-1.5 flex h-5 w-5 items-center justify-center bg-emerald-500 text-slate-950 font-tech text-[10px] font-black rounded-full shadow-[0_0_10px_rgba(16,185,129,0.5)]">
+              2
+            </span>
+          </button>
+
+          <!-- User profile container -->
+          <div class="flex items-center gap-3 pl-3 border-l border-slate-800">
+            <!-- Profile avatar with live indicator -->
+            <div class="relative w-9 h-9">
+              <img src="https://picsum.photos/100/100?random=50" class="rounded-lg border border-slate-700 object-cover w-full h-full" alt="Profile" />
+              <!-- Status dot absolute position -->
+              <span class="absolute bottom-[-2px] right-[-2px] w-3 h-3 bg-emerald-500 rounded-full border-2 border-slate-950"></span>
+            </div>
+            <div class="hidden lg:block text-left">
+              <span class="block text-xs font-bold text-slate-200">제이슨 님</span>
+              <span class="block text-[9px] font-semibold text-emerald-500 tracking-wider font-tech">LEVEL 99 BUILDER</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </header>
+
+    <!-- 2. CYBERPUNK HERO BANNER (Responsive spacing, Flex structure) -->
+    <section class="relative overflow-hidden py-16 lg:py-24 border-b border-slate-900/60">
+      <!-- Glow decoration particles absolute positioning -->
+      <div class="absolute top-1/2 left-1/4 -translate-y-1/2 w-96 h-96 bg-emerald-500/5 blur-[120px] rounded-full pointer-events-none"></div>
+      <div class="absolute bottom-10 right-1/4 w-[500px] h-[500px] bg-indigo-500/5 blur-[160px] rounded-full pointer-events-none"></div>
+
+      <div class="container mx-auto px-4 md:px-6 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <!-- Text intro -->
+        <div class="lg:col-span-7 text-center lg:text-left flex flex-col gap-6">
+          <div class="inline-flex self-center lg:self-start items-center gap-2 px-3.5 py-1.5 bg-emerald-950/40 border border-emerald-500/25 rounded-full text-xs font-bold text-emerald-400 tracking-wider">
+            <span class="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-ping"></span>
+            LATEST NVIDIA RTX 50-SERIES IN STOCK NOW
+          </div>
+          
+          <h1 class="text-4xl md:text-5xl xl:text-6xl font-black tracking-tight leading-none text-white">
+            제이슨의 명품<br />
+            <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-indigo-500 font-tech">HARDWARE STORE</span>
+          </h1>
+          
+          <p class="text-slate-400 text-base md:text-lg max-w-xl mx-auto lg:mx-0">
+            차세대 AI 가속기 및 하이엔드 게이밍 GPU 완벽 라인업. 전 세계 채굴 및 인공지능 엔지니어들이 검증한 고수율 그래픽카드만을 선별하여 최상의 성능을 약속합니다.
+          </p>
+
+          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+            <a href="#gpu-list" class="w-full sm:w-auto px-8 py-4 bg-emerald-500 text-slate-950 font-bold tracking-wider rounded-xl hover:bg-emerald-400 transition-all duration-300 text-center shadow-[0_4px_25px_rgba(16,185,129,0.3)]">
+              실시간 재고 조회
+            </a>
+            <a href="#" class="w-full sm:w-auto px-8 py-4 bg-slate-900 border border-slate-800 hover:border-slate-700 hover:text-white text-slate-300 font-bold tracking-wider rounded-xl transition-all duration-300 text-center">
+              맞춤형 PC 견적 받기
+            </a>
+          </div>
+        </div>
+
+        <!-- Visual item display block -->
+        <div class="lg:col-span-5 flex justify-center">
+          <div class="relative w-full max-w-sm aspect-square bg-slate-900/40 border border-slate-800 rounded-3xl p-6 glass-panel flex flex-col justify-between shadow-[0_15px_40px_rgba(0,0,0,0.4)]">
+            <div class="absolute top-4 right-4 flex items-center gap-1.5 px-2 py-1 bg-emerald-500/10 border border-emerald-500/20 rounded-md text-[9px] font-tech text-emerald-400">
+              <span class="w-1.5 h-1.5 bg-emerald-400 rounded-full"></span> LIVE
+            </div>
+            
+            <div class="flex-grow flex items-center justify-center">
+              <img src="https://picsum.photos/400/400?random=80" alt="GPU Core" class="w-48 h-48 object-cover rounded-2xl border border-slate-800 shadow-[0_10px_30px_rgba(0,0,0,0.5)]" />
+            </div>
+
+            <div class="flex items-center justify-between border-t border-slate-800/80 pt-4 mt-2">
+              <div>
+                <span class="block text-[10px] text-slate-400 font-bold tracking-wide">TODAY'S HOT ITEM</span>
+                <span class="block font-tech font-bold text-sm text-white">NVIDIA RTX 5090 D6X 32GB</span>
+              </div>
+              <span class="font-tech text-emerald-400 font-bold text-lg">￦2,980,000</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. MAIN SECTION (Responsive Grid, Adaptive Sidebar, Cards, Flexbox) -->
+    <main class="container mx-auto px-4 md:px-6 my-12 flex-grow">
+      
+      <!-- Responsive title layout -->
+      <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-10 pb-6 border-b border-slate-900/60">
+        <div>
+          <h2 class="text-2xl md:text-3xl font-black text-white" id="gpu-list">실시간 하드웨어 가용 재고</h2>
+          <p class="text-sm text-slate-400">제이슨 컴퓨터가게는 당일 출고 원칙을 고수합니다.</p>
+        </div>
+        <div class="flex items-center gap-2 text-xs font-bold text-slate-400 py-2 px-4 bg-slate-900/80 border border-slate-850 rounded-full">
+          <i class="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></i> SERVER LATENCY: 2ms
+        </div>
+      </div>
+
+      <!-- Main Layout columns (Adaptive Sidebar setup) -->
+      <div class="grid grid-cols-1 xl:grid-cols-4 gap-8">
+        
+        <!-- Left: Cards list (Spans 3 columns on xl screen) -->
+        <div class="xl:col-span-3 flex flex-col gap-8">
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <!-- Card Item 1 (Position relative absolute, Flex, Responsive) -->
+            <div class="tech-card bg-slate-950/40 border border-slate-900 rounded-2xl overflow-hidden glass-panel flex flex-col h-full">
+              <div class="relative w-full aspect-video bg-slate-900/50 overflow-hidden border-b border-slate-900">
+                <img src="https://picsum.photos/500/350?random=21" alt="RTX 5090" class="w-full h-full object-cover" />
+                <!-- Absolute Badge -->
+                <span class="absolute top-4 left-4 px-3 py-1 bg-rose-500/10 text-rose-400 border border-rose-500/20 rounded-full text-[10px] font-tech font-black tracking-wider">
+                  🔥 LIMIT 1 PER CUSTOMER
+                </span>
+              </div>
+              <div class="p-5 flex flex-col flex-grow gap-4">
+                <div class="flex-grow">
+                  <span class="block text-[9px] font-tech font-bold text-emerald-500 tracking-wider">PREMIUM HIGH-END</span>
+                  <h3 class="text-lg font-bold text-white mb-2">NVIDIA RTX 5090 Founders Edition</h3>
+                  <p class="text-slate-400 text-xs leading-relaxed">
+                    초격차 AI 딥러닝 퍼포먼스 및 울트라 8K 레이 트레이싱 게이밍 성능. 대용량 32GB GDDR7 메모리 탑재.
+                  </p>
+                </div>
+                <!-- Price tag & CTA (Flexbox) -->
+                <div class="flex items-center justify-between border-t border-slate-900 pt-4 mt-2">
+                  <div>
+                    <span class="block text-[8px] text-slate-500 font-bold">BEST PRICE</span>
+                    <span class="font-tech text-emerald-400 font-black text-base">￦2,980,000</span>
+                  </div>
+                  <button class="px-4 py-2 bg-emerald-500 text-slate-950 hover:bg-emerald-400 font-bold text-xs rounded-lg transition-all duration-300 cursor-pointer" onclick="alert('RTX 5090이 장바구니에 적재되었습니다.');">
+                    구입하기
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card Item 2 -->
+            <div class="tech-card bg-slate-950/40 border border-slate-900 rounded-2xl overflow-hidden glass-panel flex flex-col h-full">
+              <div class="relative w-full aspect-video bg-slate-900/50 overflow-hidden border-b border-slate-900">
+                <img src="https://picsum.photos/500/350?random=22" alt="RTX 5080" class="w-full h-full object-cover" />
+                <span class="absolute top-4 left-4 px-3 py-1 bg-amber-500/10 text-amber-400 border border-amber-500/20 rounded-full text-[10px] font-tech font-black tracking-wider">
+                  ⭐ STOCK STABLE
+                </span>
+              </div>
+              <div class="p-5 flex flex-col flex-grow gap-4">
+                <div class="flex-grow">
+                  <span class="block text-[9px] font-tech font-bold text-emerald-500 tracking-wider">POPULAR CHOICE</span>
+                  <h3 class="text-lg font-bold text-white mb-2">NVIDIA RTX 5080 Extreme D7 16GB</h3>
+                  <p class="text-slate-400 text-xs leading-relaxed">
+                    완벽한 가격대 성능비. 최고 옵션 4K 게이밍 및 원활한 생성형 AI 이미지 추론 최적화 코어 내장.
+                  </p>
+                </div>
+                <div class="flex items-center justify-between border-t border-slate-900 pt-4 mt-2">
+                  <div>
+                    <span class="block text-[8px] text-slate-500 font-bold">PRICE</span>
+                    <span class="font-tech text-slate-200 font-black text-base">￦1,750,000</span>
+                  </div>
+                  <button class="px-4 py-2 bg-emerald-500 text-slate-950 hover:bg-emerald-400 font-bold text-xs rounded-lg transition-all duration-300 cursor-pointer" onclick="alert('RTX 5080이 장바구니에 적재되었습니다.');">
+                    구입하기
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card Item 3 -->
+            <div class="tech-card bg-slate-950/40 border border-slate-900 rounded-2xl overflow-hidden glass-panel flex flex-col h-full">
+              <div class="relative w-full aspect-video bg-slate-900/50 overflow-hidden border-b border-slate-900">
+                <img src="https://picsum.photos/500/350?random=23" alt="ASUS ROG B650" class="w-full h-full object-cover" />
+                <span class="absolute top-4 left-4 px-3 py-1 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-full text-[10px] font-tech font-black tracking-wider">
+                  🌱 NEW ITEM
+                </span>
+              </div>
+              <div class="p-5 flex flex-col flex-grow gap-4">
+                <div class="flex-grow">
+                  <span class="block text-[9px] font-tech font-bold text-emerald-500 tracking-wider">CORE COMPONENT</span>
+                  <h3 class="text-lg font-bold text-white mb-2">ASUS ROG STRIX B650-A Gaming</h3>
+                  <p class="text-slate-400 text-xs leading-relaxed">
+                    강력한 전원부 페이즈와 견고한 히트싱크 설계를 겸비하여 GPU 풀 로드 시에도 극상의 마더보드 안정성을 보장.
+                  </p>
+                </div>
+                <div class="flex items-center justify-between border-t border-slate-900 pt-4 mt-2">
+                  <div>
+                    <span class="block text-[8px] text-slate-500 font-bold">PRICE</span>
+                    <span class="font-tech text-slate-200 font-black text-base">￦289,000</span>
+                  </div>
+                  <button class="px-4 py-2 bg-emerald-500 text-slate-950 hover:bg-emerald-400 font-bold text-xs rounded-lg transition-all duration-300 cursor-pointer" onclick="alert('ASUS ROG 메인보드가 장바구니에 적재되었습니다.');">
+                    구입하기
+                  </button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- 4. ADAPTIVE PROMO BANNER (Responsive design, Flex) -->
+          <div class="relative p-6 md:p-8 bg-slate-950 border border-slate-850 rounded-2xl overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="absolute -right-16 -top-16 w-48 h-48 bg-emerald-500/10 blur-[50px] rounded-full pointer-events-none"></div>
+            <div class="text-center md:text-left">
+              <h3 class="text-lg md:text-xl font-black text-white mb-2"><span class="text-emerald-400 font-tech">GPU RENTAL</span> 서버 대여 서비스 출시!</h3>
+              <p class="text-xs md:text-sm text-slate-400">초거대 LLM 및 AI 훈련을 위해 고사양 GPU 연산 노드를 필요한 시간만큼 빌려 쓰세요.</p>
+            </div>
+            <button class="w-full md:w-auto px-6 py-3.5 bg-slate-900 border border-slate-800 hover:border-slate-700 text-emerald-400 hover:text-emerald-300 font-bold text-xs rounded-xl tracking-wider transition-all duration-300 flex-shrink-0 cursor-pointer" onclick="alert('서버 렌탈 페이지로 이동합니다.');">
+              대여 상담 신청
+            </button>
+          </div>
+
+        </div>
+
+        <!-- Right: Adaptive Tech Sidebar (hidden xl:block - adaptive view) -->
+        <aside class="hidden xl:block xl:col-span-1">
+          <div class="sticky top-28 bg-slate-950/40 border border-slate-900 rounded-2xl p-6 glass-panel flex flex-col gap-8 shadow-[0_10px_35px_rgba(0,0,0,0.4)]">
+            
+            <!-- Widget 1: System Status -->
+            <div>
+              <h4 class="font-tech text-xs font-black tracking-widest text-white border-b border-slate-900 pb-3 mb-4 flex items-center gap-2">
+                <i class="w-2.5 h-2.5 bg-emerald-500 rounded-full block"></i> STORE HEALTH
+              </h4>
+              <div class="flex flex-col gap-4 text-xs">
+                <div class="flex items-center justify-between">
+                  <span class="text-slate-400">GPU 재고 상태</span>
+                  <span class="text-emerald-400 font-bold">안정화 단계 (94%)</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="text-slate-400">최근 배송 지연율</span>
+                  <span class="text-slate-200 font-bold">0.12% (당일출고)</span>
+                </div>
+                <div class="flex items-center justify-between">
+                  <span class="text-slate-400">온라인 CS 상담</span>
+                  <span class="text-emerald-400 font-bold flex items-center gap-1">
+                    <span class="w-1.5 h-1.5 bg-emerald-400 rounded-full animate-ping"></span> 상담 가능
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Widget 2: Live Stock Feed -->
+            <div>
+              <h4 class="font-tech text-xs font-black tracking-widest text-white border-b border-slate-900 pb-3 mb-4 flex items-center gap-2">
+                <i class="w-2.5 h-2.5 bg-indigo-500 rounded-full block"></i> REALTIME TRANSACTIONS
+              </h4>
+              <div class="flex flex-col gap-3 text-[11px]">
+                <div class="p-3 bg-slate-900/60 border border-slate-900 rounded-xl flex items-center justify-between gap-3">
+                  <div>
+                    <span class="block font-bold text-slate-200">RTX 5090 FE 1개 구매 완료</span>
+                    <span class="text-[9px] text-slate-500">30초 전 | 마포구 서*우 회원님</span>
+                  </div>
+                  <span class="text-emerald-500 font-tech font-bold">SALE</span>
+                </div>
+                <div class="p-3 bg-slate-900/60 border border-slate-900 rounded-xl flex items-center justify-between gap-3">
+                  <div>
+                    <span class="block font-bold text-slate-200">ASUS ROG STRIX 1개 구매 완료</span>
+                    <span class="text-[9px] text-slate-500">2분 전 | 은평구 김*수 회원님</span>
+                  </div>
+                  <span class="text-emerald-500 font-tech font-bold">SALE</span>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </aside>
+
+      </div>
+    </main>
+
+    <!-- 5. FOOTER (Grid, Responsive, Flex) -->
+    <footer class="bg-[#03040a] border-t border-slate-950/80 py-12 text-slate-400 text-xs">
+      <div class="container mx-auto px-4 md:px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-8 pb-8 border-b border-slate-900/60">
+        <div class="flex flex-col gap-4">
+          <span class="font-tech text-lg font-black tracking-widest text-white">JASON TECH</span>
+          <p class="text-slate-500 leading-relaxed">
+            제이슨의 컴퓨터가게는 최첨단 AI 하드웨어 가속기 및 하이엔드 게이밍 그래픽카드를 전문적으로 유통하는 국내 리딩 플랫폼입니다.
+          </p>
+        </div>
+        <div class="flex flex-col gap-3">
+          <span class="font-bold text-slate-200">MENU</span>
+          <a href="#" class="hover:text-emerald-400 transition-colors duration-300">GPU 재고 조회</a>
+          <a href="#" class="hover:text-emerald-400 transition-colors duration-300">마이페이지</a>
+          <a href="#" class="hover:text-emerald-400 transition-colors duration-300">실시간 주문현황</a>
+        </div>
+        <div class="flex flex-col gap-3">
+          <span class="font-bold text-slate-200">SUPPORT</span>
+          <a href="#" class="hover:text-emerald-400 transition-colors duration-300">1:1 온라인 기술 문의</a>
+          <a href="#" class="hover:text-emerald-400 transition-colors duration-300">배송 및 교환 안내</a>
+          <a href="#" class="hover:text-emerald-400 transition-colors duration-300">대여 계약 약관</a>
+        </div>
+        <div class="flex flex-col gap-3">
+          <span class="font-bold text-slate-200">CS CENTER</span>
+          <span class="text-lg font-bold font-tech text-white">02-715-1010</span>
+          <span class="text-slate-500">평일 10:00 - 18:00 (주말/공휴일 휴무)</span>
+        </div>
+      </div>
+      
+      <div class="container mx-auto px-4 md:px-6 flex flex-col md:flex-row items-center justify-between gap-4">
+        <span class="text-slate-600">&copy; 2026 Jason Tech Store. All Rights Reserved. Built with Tailwind CSS v4.</span>
+        <div class="flex items-center gap-6 text-slate-500">
+          <a href="#" class="hover:text-slate-300 transition-colors duration-300">이용약관</a>
+          <a href="#" class="hover:text-slate-300 transition-colors duration-300">개인정보처리방침</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- FLOATING CHAT HELPER BUTTON (Position Fixed, Flex, Custom shadow) -->
+    <button class="fixed bottom-6 right-6 z-50 flex items-center justify-center w-14 h-14 bg-emerald-500 text-slate-950 rounded-full hover:bg-emerald-400 hover:scale-105 active:scale-95 transition-all duration-300 shadow-[0_0_20px_rgba(16,185,129,0.4)] cursor-pointer" onclick="alert('제이슨 실시간 채널톡 서비스로 이동합니다.');" aria-label="1:1 상담원 연결">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+      </svg>
+    </button>
+
+  </body>
+</html>
