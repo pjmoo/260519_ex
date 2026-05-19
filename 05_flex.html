@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flex</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .flex-container {
+        display: flex;
+        width: 100%;
+        padding: 24px;
+        border: 1px solid gray;
+        /* flex-direction: row; */
+      }
+      /* > : 하위 요소 */
+      .flex-container > * {
+        /* width: 64px; */
+        /* height: 64px; */
+        border: 1px solid red;
+        /* margin: 16px; */
+        background-color: beige;
+      }
+      .direction-column {
+        flex-direction: column;
+        /* flex-direction: row-reverse; */
+        /* flex-direction: column-reverse; */
+        /* reverse -> flex item의 배치 순서 */
+        height: 400px;
+      }
+      .item {
+        width: 24px;
+        height: 24px;
+        background-color: aqua;
+        border: 1px solid gray;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- flex box : display flex 걸로 감싸주면 그 아래에 있는 요소들은 flex item -->
+    <div class="flex-container" style="justify-content: start">
+      <!-- flex item : inline, block 다 무시 -->
+      <div>div</div>
+      <span>span</span>
+      <p>p</p>
+    </div>
+    <!-- justify/align | content/items -->
+    <!-- main/cross -> main 정렬 : justify-content -->
+    <!-- cross 정렬 : align-items -->
+    <!-- box -> main JC -->
+    <!--        cross AI -->
+    <div class="flex-container" style="justify-content: end">
+      <!-- flex item : inline, block 다 무시 -->
+      <div>div</div>
+      <span>span</span>
+      <p>p</p>
+    </div>
+    <div class="flex-container" style="justify-content: center">
+      <!-- flex item : inline, block 다 무시 -->
+      <div>div</div>
+      <span>span</span>
+      <p>p</p>
+    </div>
+    <div class="flex-container" style="justify-content: space-evenly">
+      <!-- 남은 여백을 1/n로 -->
+      <div>div</div>
+      <span>span</span>
+      <p>p</p>
+    </div>
+    <div class="flex-container" style="justify-content: space-between">
+      <!-- 맨앞 맨뒤는 여백 x. 나머지 중간 여백이 여백을 나눠가짐 -->
+      <div>div</div>
+      <span>span</span>
+      <p>p</p>
+    </div>
+    <div class="flex-container" style="justify-content: space-around">
+      <!-- 맨앞 맨뒤는 여백 x. 나머지 중간 여백이 여백을 나눠가짐 -->
+      <div>div</div>
+      <span>span</span>
+      <p>p</p>
+    </div>
+    <hr />
+    <div
+      class="flex-container direction-column"
+      style="
+        /* justify-content: start; */
+        /* justify-content: center; */
+        justify-content: end;
+      "
+    >
+      <!-- flex item : inline, block 다 무시 -->
+      <div>div</div>
+      <span>span</span>
+      <p>p</p>
+    </div>
+    <!-- cross axis -> align items -->
+    <!-- flex wrap. + row/column item 배치 -->
+    <div class="flex-container" style="height: 200px; align-items: start">
+      <div>div</div>
+      <span>span</span>
+      <p>p</p>
+    </div>
+    <div class="flex-container" style="height: 200px; align-items: end">
+      <div>div</div>
+      <span>span</span>
+      <p>p</p>
+    </div>
+    <div class="flex-container" style="height: 200px; align-items: center">
+      <div>div</div>
+      <span>span</span>
+      <p>p</p>
+    </div>
+    <div
+      class="flex-container"
+      style="height: 200px; align-items: center; justify-content: center"
+    >
+      <div>div</div>
+      <span>span</span>
+      <p>p</p>
+    </div>
+    <div class="flex-container" style="height: 200px; align-items: stretch">
+      <div>div</div>
+      <span>span</span>
+      <p>p</p>
+    </div>
+    <!-- wrap -->
+    <!-- 1. 일반 flexbox는 overflow -->
+    <div
+      class="flex-container"
+      style="/* flex-wrap: wrap; */ flex-wrap: wrap-reverse"
+    >
+      <div style="width: 100px">box1</div>
+      <div style="width: 100px">box2</div>
+      <div style="width: 100px">box3</div>
+    </div>
+    <hr />
+    <!-- flex 겹침 (2차원) -->
+    <div style="display: flex; flex-direction: column">
+      <!-- 위 아래로 아래의 것들 배치 -->
+      <div style="display: flex; flex-direction: row">
+        <!-- 왼쪽 오른쪽으로 배치 -->
+        <div class="item">a1</div>
+        <div class="item">a2</div>
+        <div class="item">a3</div>
+      </div>
+      <div style="display: flex; flex-direction: row">
+        <!-- 왼쪽 오른쪽으로 배치 -->
+        <div class="item">b1</div>
+        <div class="item">b2</div>
+        <div class="item">b3</div>
+      </div>
+    </div>
+    <hr />
+    <!-- flex 겹침 (2차원) -->
+    <div style="display: flex; flex-direction: row">
+      <!-- 위 아래로 아래의 것들 배치 -->
+      <div style="display: flex; flex-direction: column">
+        <!-- 왼쪽 오른쪽으로 배치 -->
+        <div class="item">a1</div>
+        <div class="item">a2</div>
+        <div class="item">a3</div>
+      </div>
+      <div style="display: flex; flex-direction: column">
+        <!-- 왼쪽 오른쪽으로 배치 -->
+        <div class="item">b1</div>
+        <div class="item">b2</div>
+        <div class="item">b3</div>
+      </div>
+    </div>
+
+    <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+  </body>
+</html>
