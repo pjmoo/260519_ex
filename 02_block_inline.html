@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Block & Inline</title>
+  <style>
+    /* 전체 레이아웃 스타일 */
+    body {
+      font-family: 'Malgun Gothic', sans-serif;
+      margin: 40px;
+      background-color: #f5f6f8;
+      color: #333;
+    }
+    
+    h1 {
+      color: #2c3e50;
+      border-bottom: 2px solid #34495e;
+      padding-bottom: 10px;
+    }
+
+    h2 {
+      margin-top: 30px;
+      color: #2980b9;
+    }
+
+    .container {
+      background-color: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      margin-bottom: 30px;
+    }
+
+    p {
+      color: #555;
+    }
+
+    /* Block 요소 데모 */
+    .block-example {
+      background-color: #e8f4fd;
+      border: 2px solid #3498db;
+      padding: 15px;
+      margin: 10px 0;
+      /* Block 요소는 기본적으로 가로폭 전체를 차지합니다. */
+      /* 크기(width, height) 및 여백(margin, padding) 조절이 완벽히 적용됩니다. */
+      width: 300px; 
+      height: 80px;
+    }
+
+    /* Inline 요소 데모 */
+    .inline-example {
+      background-color: #e8f8f5;
+      border: 2px solid #2ecc71;
+      padding: 15px;
+      margin: 20px; /* inline 요소는 상하 margin이 무시됩니다. 좌우 margin만 적용됩니다. */
+      /* Inline 요소는 컨텐츠 크기만큼만 가로폭을 차지합니다. */
+      /* width, height 속성은 완전히 무시됩니다. */
+      width: 300px; /* 무시됨 */
+      height: 80px; /* 무시됨 */
+    }
+
+    /* Inline-Block 요소 데모 */
+    .inline-block-example {
+      display: inline-block;
+      background-color: #fef9e7;
+      border: 2px solid #f1c40f;
+      padding: 15px;
+      margin: 10px;
+      /* Inline 요소처럼 가로로 배치되지만, Block 요소처럼 크기 조절이 가능합니다. */
+      width: 150px;
+      height: 80px;
+    }
+
+    .note {
+      font-size: 0.9em;
+      color: #7f8c8d;
+      background-color: #fcfcfc;
+      border-left: 4px solid #bdc3c7;
+      padding: 10px;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>CSS Display: Block & Inline & Inline-Block</h1>
+
+  <div class="container">
+    <h2>1. Block (블록 레벨 요소)</h2>
+    <p>대표적인 태그: &lt;div&gt;, &lt;p&gt;, &lt;h1&gt;~&lt;h6&gt;, &lt;ul&gt;, &lt;li&gt; 등</p>
+    <p>특징: 항상 새로운 줄에서 시작하며, 부모 요소의 가로 너비 100%를 기본으로 차지합니다. <strong>크기 지정(width, height) 및 여백(margin, padding)이 완전히 적용됩니다.</strong></p>
+    
+    <div class="block-example">Block 1 (width: 300px, height: 80px)</div>
+    <div class="block-example">Block 2 (width: 300px, height: 80px)</div>
+  </div>
+
+  <div class="container">
+    <h2>2. Inline (인라인 레벨 요소)</h2>
+    <p>대표적인 태그: &lt;span&gt;, &lt;a&gt;, &lt;strong&gt;, &lt;em&gt; 등</p>
+    <p>특징: 새로운 줄에서 시작하지 않고, 텍스트 흐름에 맞춰 옆으로 나란히 배치됩니다. <strong>width, height 속성이 작동하지 않으며, 상하 margin 여백도 무시됩니다.</strong> (padding은 시각적으로 적용되나 주변 레이아웃을 밀어내지 않습니다)</p>
+    
+    <span class="inline-example">Inline 1 (span 태그)</span>
+    <span class="inline-example">Inline 2 (span 태그)</span>
+    <span class="inline-example">Inline 3 (span 태그)</span>
+    
+    <div class="note">
+      * 크기(width: 300px, height: 80px)를 부여했음에도 무시되고 글자 크기만큼만 영역이 잡힌 것을 확인할 수 있습니다. 또한 상하 margin도 온전히 작동하지 않습니다.
+    </div>
+  </div>
+
+  <div class="container">
+    <h2>3. Inline-Block (인라인 블록 요소)</h2>
+    <p>대표적인 태그: &lt;input&gt;, &lt;button&gt;, &lt;select&gt; 등 (또는 display: inline-block; 지정)</p>
+    <p>특징: Inline 요소처럼 <strong>줄 바꿈 없이 옆으로 나란히 배치</strong>되지만, Block 요소처럼 <strong>width, height, margin, padding 속성을 모두 존중</strong>합니다.</p>
+    
+    <div class="inline-block-example">Inline-Block 1</div>
+    <div class="inline-block-example">Inline-Block 2</div>
+    <div class="inline-block-example">Inline-Block 3</div>
+  </div>
+
+</body>
+</html>
